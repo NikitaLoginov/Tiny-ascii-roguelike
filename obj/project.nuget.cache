@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "UyH/qmzKp+HP7MQpFyPcGnjzHJqGoDClCWVib55mQ3MW8HxGxLX506q+/V/duYpb573ZpqRA/f1/N8CRKe680Q==",
+  "success": true,
+  "projectFilePath": "/Users/mykytaloginov/Documents/CSHARP_Fun/SC+VSCode/SC+VSCode.csproj",
+  "expectedPackageFiles": [
+    "/Users/mykytaloginov/.nuget/packages/monogame.framework.desktopgl.core/3.8.0.13/monogame.framework.desktopgl.core.3.8.0.13.nupkg.sha512",
+    "/Users/mykytaloginov/.nuget/packages/newtonsoft.json/11.0.2/newtonsoft.json.11.0.2.nupkg.sha512",
+    "/Users/mykytaloginov/.nuget/packages/sadconsole/8.99.1/sadconsole.8.99.1.nupkg.sha512"
+  ],
+  "logs": []
+}
