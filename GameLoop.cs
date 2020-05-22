@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework;
 using Console = SadConsole.Console;
 using SC_VSCode.UI;
 using SC_VSCode.Commands;
+using SC_VSCode.Entities;
 
 namespace SC_VSCode
 {

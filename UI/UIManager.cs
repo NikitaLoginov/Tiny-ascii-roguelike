@@ -2,6 +2,7 @@ using System;
 using SadConsole;
 using SadConsole.Controls;
 using Microsoft.Xna.Framework;
+using SC_VSCode.Entities;
 
 namespace SC_VSCode.UI
 {
@@ -28,8 +29,8 @@ namespace SC_VSCode.UI
         // so they are updated and drawn
         public void CreateConsoles()
         {
-            MapConsole = new SadConsole.ScrollingConsole(GameLoop.World.CurrentMap.Width, GameLoop.World.CurrentMap.Height, Global.FontDefault, 
-                                                        new Rectangle(0, 0, GameLoop.GameWidth, GameLoop.GameHeight), GameLoop.World.CurrentMap.Tiles);
+            // Temporarily create a console with *no* tile data that will later be replaced with map data
+            MapConsole = new ScrollingConsole(GameLoop.GameWidth, GameLoop.GameHeight);
         }
         public override void Update(TimeSpan timeElapsed)
         {
@@ -139,11 +140,8 @@ namespace SC_VSCode.UI
         public void Init()
         {
             CreateConsoles();
-            CreateMapWindow(GameLoop.GameWidth / 2, GameLoop.GameHeight / 2, "Game Map");
 
-            //start the game with viewport focused on the player
-            CenterOnActor(GameLoop.World.Player);
-
+            //MessageLog initialization
             MessageLog = new MessageLogWindow(GameLoop.GameWidth / 2, GameLoop.GameHeight / 2, "Message Log");
             Children.Add(MessageLog);
             MessageLog.Show();
@@ -164,6 +162,59 @@ namespace SC_VSCode.UI
             MessageLog.Add("Testing 162");
             MessageLog.Add("Testing 16");
             MessageLog.Add("Testing Last");
+
+            //Load the map into MapConsole
+            LoadMap(GameLoop.World.CurrentMap);
+
+            //After MapConsole is ready - build a window
+            CreateMapWindow(GameLoop.GameWidth / 2, GameLoop.GameHeight / 2, "Game Map");
+            UseMouse = true;
+
+            //start the game with viewport focused on the player
+            CenterOnActor(GameLoop.World.Player);
+        }
+
+        // Adds the entire list of entities found in the
+        // World.CurrentMap's Entities SpatialMap to the
+        // MapConsole, so they can be seen onscreen
+        private void SyncMapEntities(Map map)
+        {
+            // remove all Entities from the console first
+            MapConsole.Children.Clear();
+
+            //pull all of the entities into MapConsole in bulk
+            foreach(Entity entity in map.Entities.Items) // access SpatialMap objects via Items
+            {
+                MapConsole.Children.Add(entity);
+            }
+            // Subscribe to the Entities ItemAdded listener, so we can keep our MapConsole entities in sync
+            map.Entities.ItemAdded += OnMapEntityAdded;
+
+            // Subscribe to the Entities ItemRemoved listener, so we can keep our MapConsole entities in sync
+            map.Entities.ItemRemoved += OnMapEntityRemoved;
+        }
+
+        // Remove an Entity from the MapConsole every time the Map's Entity collection changes
+        public void OnMapEntityRemoved(object sender, GoRogue.ItemEventArgs<Entity> args)
+        {
+            MapConsole.Children.Remove(args.Item);
+        }
+
+        // Add an Entity from the MapConsole every time the Map's Entity collection changes
+        public void OnMapEntityAdded(object sender, GoRogue.ItemEventArgs<Entity> args)
+        {
+            MapConsole.Children.Add(args.Item);
+        }
+
+        // Loads a Map into the MapConsole
+        private void LoadMap(Map map)
+        {
+            // First load the map's tiles into the console
+            MapConsole = new SadConsole.ScrollingConsole(GameLoop.World.CurrentMap.Width, GameLoop.World.CurrentMap.Height,Global.FontDefault,
+                                                        new Rectangle(0,0,GameLoop.GameWidth, GameLoop.GameHeight), map.Tiles);
+            
+            // Now Sync all of the map's entities
+            SyncMapEntities(map);
         }
     }
 }

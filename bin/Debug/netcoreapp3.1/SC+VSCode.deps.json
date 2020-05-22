@@ -8,11 +8,24 @@
     ".NETCoreApp,Version=v3.1": {
       "SC+VSCode/1.0.0": {
         "dependencies": {
+          "GoRogue": "2.6.1",
           "MonoGame.Framework.DesktopGL.Core": "3.8.0.13",
           "SadConsole": "8.99.1"
         },
         "runtime": {
           "SC+VSCode.dll": {}
+        }
+      },
+      "GoRogue/2.6.1": {
+        "dependencies": {
+          "OptimizedPriorityQueue": "4.2.0",
+          "Troschuetz.Random": "4.3.1"
+        },
+        "runtime": {
+          "lib/netstandard2.0/GoRogue.dll": {
+            "assemblyVersion": "2.6.1.0",
+            "fileVersion": "2.6.1.0"
+          }
         }
       },
       "MonoGame.Framework.DesktopGL.Core/3.8.0.13": {
@@ -73,6 +86,14 @@
           }
         }
       },
+      "OptimizedPriorityQueue/4.2.0": {
+        "runtime": {
+          "lib/netstandard1.0/Priority Queue.dll": {
+            "assemblyVersion": "4.2.0.0",
+            "fileVersion": "4.2.0.0"
+          }
+        }
+      },
       "SadConsole/8.99.1": {
         "dependencies": {
           "Newtonsoft.Json": "11.0.2"
@@ -83,6 +104,14 @@
             "fileVersion": "8.99.1.0"
           }
         }
+      },
+      "Troschuetz.Random/4.3.1": {
+        "runtime": {
+          "lib/netstandard2.1/Troschuetz.Random.dll": {
+            "assemblyVersion": "4.3.1.0",
+            "fileVersion": "4.3.1.0"
+          }
+        }
       }
     }
   },
@@ -91,6 +120,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "GoRogue/2.6.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-o7FkfsGwrR6VyJ++AWgNohjXA+mVb5BbnzBapqKPaA+fXsAMQeOHQHtrv+lic7ygAsHVCIyVr3KfI7fX/erdjg==",
+      "path": "gorogue/2.6.1",
+      "hashPath": "gorogue.2.6.1.nupkg.sha512"
     },
     "MonoGame.Framework.DesktopGL.Core/3.8.0.13": {
       "type": "package",
@@ -106,12 +142,26 @@
       "path": "newtonsoft.json/11.0.2",
       "hashPath": "newtonsoft.json.11.0.2.nupkg.sha512"
     },
+    "OptimizedPriorityQueue/4.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/Sr/OfCFnff7zFe6HoDyWRU8pEvJbOCE9ZjFCSH0EcfETjgvZJ2kUoqlTgVR7cgTPexOGhNATdBKQigqbYn43w==",
+      "path": "optimizedpriorityqueue/4.2.0",
+      "hashPath": "optimizedpriorityqueue.4.2.0.nupkg.sha512"
+    },
     "SadConsole/8.99.1": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-FdTZeDFdfSDNz0MXLhxOLE7dQekzPM8XixvJFCfscQZmsFm8f/yp+5yWiM8O12Vz4iMghc/TIaFYAZCEzJUjVA==",
       "path": "sadconsole/8.99.1",
       "hashPath": "sadconsole.8.99.1.nupkg.sha512"
+    },
+    "Troschuetz.Random/4.3.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-F6ofytpDeE1LGyEeg9T+jfEYJ5QdfdhkqZ7R8GFBQ91nZMmAMTirnL5gkh2bygo1yDN+e6aZQldA7k1BjYalSg==",
+      "path": "troschuetz.random/4.3.1",
+      "hashPath": "troschuetz.random.4.3.1.nupkg.sha512"
     }
   }
 }

@@ -22,3 +22,6 @@
 /Users/mykytaloginov/Documents/CSHARP_Fun/SC+VSCode/obj/Debug/netcoreapp3.1/SC+VSCode.dll
 /Users/mykytaloginov/Documents/CSHARP_Fun/SC+VSCode/obj/Debug/netcoreapp3.1/SC+VSCode.pdb
 /Users/mykytaloginov/Documents/CSHARP_Fun/SC+VSCode/obj/Debug/netcoreapp3.1/SC+VSCode.genruntimeconfig.cache
+/Users/mykytaloginov/Documents/CSHARP_Fun/SC+VSCode/bin/Debug/netcoreapp3.1/GoRogue.dll
+/Users/mykytaloginov/Documents/CSHARP_Fun/SC+VSCode/bin/Debug/netcoreapp3.1/Priority Queue.dll
+/Users/mykytaloginov/Documents/CSHARP_Fun/SC+VSCode/bin/Debug/netcoreapp3.1/Troschuetz.Random.dll

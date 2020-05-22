@@ -2,6 +2,19 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v3.1": {
+      "GoRogue/2.6.1": {
+        "type": "package",
+        "dependencies": {
+          "OptimizedPriorityQueue": "4.2.0",
+          "Troschuetz.Random": "4.3.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/GoRogue.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/GoRogue.dll": {}
+        }
+      },
       "MonoGame.Framework.DesktopGL.Core/3.8.0.13": {
         "type": "package",
         "compile": {
@@ -57,6 +70,15 @@
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
       },
+      "OptimizedPriorityQueue/4.2.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard1.0/Priority Queue.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/Priority Queue.dll": {}
+        }
+      },
       "SadConsole/8.99.1": {
         "type": "package",
         "dependencies": {
@@ -68,10 +90,33 @@
         "runtime": {
           "lib/netstandard2.0/SadConsole.dll": {}
         }
+      },
+      "Troschuetz.Random/4.3.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Troschuetz.Random.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/Troschuetz.Random.dll": {}
+        }
       }
     }
   },
   "libraries": {
+    "GoRogue/2.6.1": {
+      "sha512": "o7FkfsGwrR6VyJ++AWgNohjXA+mVb5BbnzBapqKPaA+fXsAMQeOHQHtrv+lic7ygAsHVCIyVr3KfI7fX/erdjg==",
+      "type": "package",
+      "path": "gorogue/2.6.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "gorogue.2.6.1.nupkg.sha512",
+        "gorogue.nuspec",
+        "lib/netstandard2.0/GoRogue.dll",
+        "lib/netstandard2.0/GoRogue.xml",
+        "readme.txt"
+      ]
+    },
     "MonoGame.Framework.DesktopGL.Core/3.8.0.13": {
       "sha512": "cMsc/UZFS8Uk/a1RDc8OZ9Z2EXrEglWGcZGSvPJiWEcUC5Oo9K9uoZXaprvesM3YbyT1ItzqS4jXjTDR4qT4WA==",
       "type": "package",
@@ -126,6 +171,35 @@
         "newtonsoft.json.nuspec"
       ]
     },
+    "OptimizedPriorityQueue/4.2.0": {
+      "sha512": "/Sr/OfCFnff7zFe6HoDyWRU8pEvJbOCE9ZjFCSH0EcfETjgvZJ2kUoqlTgVR7cgTPexOGhNATdBKQigqbYn43w==",
+      "type": "package",
+      "path": "optimizedpriorityqueue/4.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net20/Priority Queue.dll",
+        "lib/net20/Priority Queue.pdb",
+        "lib/net20/Priority Queue.xml",
+        "lib/net35-unity full v3.5/Priority Queue.dll",
+        "lib/net35-unity full v3.5/Priority Queue.pdb",
+        "lib/net35-unity full v3.5/Priority Queue.xml",
+        "lib/net35-unity subset v3.5/Priority Queue.dll",
+        "lib/net35-unity subset v3.5/Priority Queue.pdb",
+        "lib/net35-unity subset v3.5/Priority Queue.xml",
+        "lib/net45/Priority Queue.dll",
+        "lib/net45/Priority Queue.pdb",
+        "lib/net45/Priority Queue.xml",
+        "lib/netstandard1.0/Priority Queue.dll",
+        "lib/netstandard1.0/Priority Queue.pdb",
+        "lib/netstandard1.0/Priority Queue.xml",
+        "lib/portable-net40+sl5+win8+wpa81+wp8/Priority Queue.dll",
+        "lib/portable-net40+sl5+win8+wpa81+wp8/Priority Queue.pdb",
+        "lib/portable-net40+sl5+win8+wpa81+wp8/Priority Queue.xml",
+        "optimizedpriorityqueue.4.2.0.nupkg.sha512",
+        "optimizedpriorityqueue.nuspec"
+      ]
+    },
     "SadConsole/8.99.1": {
       "sha512": "FdTZeDFdfSDNz0MXLhxOLE7dQekzPM8XixvJFCfscQZmsFm8f/yp+5yWiM8O12Vz4iMghc/TIaFYAZCEzJUjVA==",
       "type": "package",
@@ -140,10 +214,46 @@
         "sadconsole.8.99.1.nupkg.sha512",
         "sadconsole.nuspec"
       ]
+    },
+    "Troschuetz.Random/4.3.1": {
+      "sha512": "F6ofytpDeE1LGyEeg9T+jfEYJ5QdfdhkqZ7R8GFBQ91nZMmAMTirnL5gkh2bygo1yDN+e6aZQldA7k1BjYalSg==",
+      "type": "package",
+      "path": "troschuetz.random/4.3.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net35/Troschuetz.Random.dll",
+        "lib/net35/Troschuetz.Random.pdb",
+        "lib/net35/Troschuetz.Random.xml",
+        "lib/net40/Troschuetz.Random.dll",
+        "lib/net40/Troschuetz.Random.pdb",
+        "lib/net40/Troschuetz.Random.xml",
+        "lib/net45/Troschuetz.Random.dll",
+        "lib/net45/Troschuetz.Random.pdb",
+        "lib/net45/Troschuetz.Random.xml",
+        "lib/net461/Troschuetz.Random.dll",
+        "lib/net461/Troschuetz.Random.pdb",
+        "lib/net461/Troschuetz.Random.xml",
+        "lib/net472/Troschuetz.Random.dll",
+        "lib/net472/Troschuetz.Random.pdb",
+        "lib/net472/Troschuetz.Random.xml",
+        "lib/netstandard1.0/Troschuetz.Random.dll",
+        "lib/netstandard1.0/Troschuetz.Random.pdb",
+        "lib/netstandard1.0/Troschuetz.Random.xml",
+        "lib/netstandard2.0/Troschuetz.Random.dll",
+        "lib/netstandard2.0/Troschuetz.Random.pdb",
+        "lib/netstandard2.0/Troschuetz.Random.xml",
+        "lib/netstandard2.1/Troschuetz.Random.dll",
+        "lib/netstandard2.1/Troschuetz.Random.pdb",
+        "lib/netstandard2.1/Troschuetz.Random.xml",
+        "troschuetz.random.4.3.1.nupkg.sha512",
+        "troschuetz.random.nuspec"
+      ]
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "GoRogue >= 2.6.1",
       "MonoGame.Framework.DesktopGL.Core >= 3.8.0.13",
       "SadConsole >= 8.99.1"
     ]
@@ -187,6 +297,10 @@
     "frameworks": {
       "netcoreapp3.1": {
         "dependencies": {
+          "GoRogue": {
+            "target": "Package",
+            "version": "[2.6.1, )"
+          },
           "MonoGame.Framework.DesktopGL.Core": {
             "target": "Package",
             "version": "[3.8.0.13, )"

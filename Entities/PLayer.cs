@@ -1,7 +1,7 @@
 using System;
 using Microsoft.Xna.Framework;
 
-namespace SC_VSCode
+namespace SC_VSCode.Entities
 {
     // Creates a new player
     // Default glyph is @

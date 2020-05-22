@@ -2,6 +2,7 @@ using System;
 using SadConsole;
 using SadConsole.Components;
 using Microsoft.Xna.Framework;
+using SC_VSCode.Entities;
 
 namespace SC_VSCode
 {
