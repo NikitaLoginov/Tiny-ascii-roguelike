@@ -31,6 +31,9 @@ namespace SC_VSCode
 
             // create an instance of a player
             CreatePlayer();
+
+            // create monsters
+            CreateMonsters();
         }
         // Create a new map using the Map class
         // and a map generator. Uses several 
@@ -47,6 +50,8 @@ namespace SC_VSCode
         private void CreatePlayer()
         {
             Player = new Player(Color.Yellow, Color.Transparent);
+            Player.Components.Add(new EntityViewSyncComponent());
+
             // spawning player on first tile that doesn't block movement
             for (int i = 0; i < CurrentMap.Tiles.Length; i++)
             {
@@ -54,11 +59,53 @@ namespace SC_VSCode
                 {
                     //set player's position to the index of the current map position using GetPointFromIndex method
                     Player.Position = SadConsole.Helpers.GetPointFromIndex(i, CurrentMap.Width);
+                    break;
                 }
             }
 
             // Add the ViewPort sync Component to the player
             Player.Components.Add(new EntityViewSyncComponent());
+        }
+
+        // Create some random monsters with random attack and defense values
+        // and drop them all over the map in
+        // random places.
+        private void CreateMonsters()
+        {
+            //number of monsters to create
+            int numMonsters = 10;
+
+            //random position generator
+            Random rndNum = new Random();
+
+            // Create several monsters and 
+            // pick a random position on the map to place them.
+            // check if the placement spot is blocking 
+            // and if it is, try a new position
+            for (int i = 0; i < numMonsters; i++)
+            {
+                int monsterPosition = 0;
+                Monster newMonster = new Monster(Color.Red, Color.Transparent);
+                newMonster.Components.Add(new EntityViewSyncComponent());
+                while(CurrentMap.Tiles[monsterPosition].IsBlockingMove)
+                {
+                    // pick a random spot on the map
+                    monsterPosition = rndNum.Next(0, CurrentMap.Width*CurrentMap.Height);
+                }
+
+                // magic numbers for an attack and defense values
+                newMonster.Defense = rndNum.Next(1,10);
+                newMonster.DefenseChance = rndNum.Next(1,50);
+                newMonster.Attack = rndNum.Next(1,10);
+                newMonster.AttackChance = rndNum.Next(1,50);
+                newMonster.Name = " an internet troll";
+
+                // Set the monster's new position
+                // Note: this fancy math will be replaced by a new helper method
+                // in the next revision of SadConsole
+                newMonster.Position = new Point(monsterPosition % CurrentMap.Width, monsterPosition / CurrentMap.Width);
+                CurrentMap.Add(newMonster);
+            }
         }
     }
 }

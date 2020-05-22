@@ -5,10 +5,13 @@ namespace SC_VSCode.Entities
 {
     public abstract class Actor : Entity
     {
-        private int _health; // current health
-        private int _maxHealth; // maximum health
-        public int Health {get{return _health;} set{_health = value;}}
-        public int MaxHealth {get{return _maxHealth;} set{_maxHealth = value;}}
+        public int Health { get; set; } // current health
+        public int MaxHealth { get; set; } // maximum health amount
+        public int Attack { get; set; } // attack strenght
+        public int AttackChance { get; set; } // percent chance of succesful attack
+        public int Defense { get; set; } // defense strenght
+        public int DefenseChance { get; set; } // percent chance of succesful block
+        public int Gold { get; set; } // amount of gold carried
         protected Actor(Color foreground, Color background, int glyph, int width=1, int height=1) : base(foreground, background, glyph, width, height)
         {
             Animation.CurrentFrame[0].Foreground = foreground;
@@ -20,8 +23,18 @@ namespace SC_VSCode.Entities
 
         public bool MoveBy(Point positionChange)
         {
-            if(SC_VSCode.GameLoop.World.CurrentMap.IsTileWalkable(Position + positionChange))
+            // Check the current map if we can move to this new position
+            if(GameLoop.World.CurrentMap.IsTileWalkable(Position + positionChange))
             {
+                // if there's a monster here,
+                // do a bump attack
+                Monster monster = GameLoop.World.CurrentMap.GetEntityAt<Monster>(Position + positionChange);
+                if(monster != null)
+                {
+                    GameLoop.CommandManager.Attack(this, monster);
+                    return true;
+                }
+
                 Position += positionChange;
                 return true;
             } else
