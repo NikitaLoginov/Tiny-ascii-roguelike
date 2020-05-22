@@ -46,7 +46,15 @@ namespace SC_VSCode
         private void CreatePlayer()
         {
             Player = new Player(Color.Yellow, Color.Transparent);
-            Player.Position = new Point(5, 5);
+            // spawning player on first tile that doesn't block movement
+            for (int i = 0; i < CurrentMap.Tiles.Length; i++)
+            {
+                if(!CurrentMap.Tiles[i].IsBlockingMove)
+                {
+                    //set player's position to the index of the current map position using GetPointFromIndex method
+                    Player.Position = SadConsole.Helpers.GetPointFromIndex(i, CurrentMap.Width);
+                }
+            }
 
             // Add the ViewPort sync Component to the player
             Player.Components.Add(new EntityViewSyncComponent());

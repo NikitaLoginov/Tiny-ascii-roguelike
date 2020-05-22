@@ -4,6 +4,7 @@ using SadConsole.Components;
 using Microsoft.Xna.Framework;
 using Console = SadConsole.Console;
 using SC_VSCode.UI;
+using SC_VSCode.Commands;
 
 namespace SC_VSCode
 {
@@ -14,6 +15,7 @@ namespace SC_VSCode
         //Managers
         public static UIManager UIManager;
         public static World World;
+        public static CommandManager CommandManager;
         
         static void Main()
         {
@@ -46,6 +48,9 @@ namespace SC_VSCode
             // Now let the UIManager create its consoles
             // so they can use the World data
             UIManager.Init();
+
+            //Instantiate a new CommandManager
+            CommandManager = new CommandManager();
         }  
     }
 }

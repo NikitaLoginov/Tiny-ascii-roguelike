@@ -52,14 +52,14 @@ namespace SC_VSCode.UI
             //keyboard movement for Player character : Up arrow
             if(SadConsole.Global.KeyboardState.IsKeyPressed(Microsoft.Xna.Framework.Input.Keys.Up))
                 {
-                    GameLoop.World.Player.MoveBy(new Point(0,-1));
+                    GameLoop.CommandManager.MoveActorBy(GameLoop.World.Player, new Point(0,-1));
                     CenterOnActor(GameLoop.World.Player);
                 }
             // Keyboard movement for Player character: Down arrow
             // Increment player's Y coordinate by 1
             if (SadConsole.Global.KeyboardState.IsKeyPressed(Microsoft.Xna.Framework.Input.Keys.Down))
             {
-                GameLoop.World.Player.MoveBy(new Point(0, 1));
+                GameLoop.CommandManager.MoveActorBy(GameLoop.World.Player,new Point(0, 1));
                 CenterOnActor(GameLoop.World.Player);
             }
 
@@ -67,7 +67,7 @@ namespace SC_VSCode.UI
             // Decrement player's X coordinate by 1
             if (SadConsole.Global.KeyboardState.IsKeyPressed(Microsoft.Xna.Framework.Input.Keys.Left))
             {
-                GameLoop.World.Player.MoveBy(new Point(-1, 0));
+                GameLoop.CommandManager.MoveActorBy(GameLoop.World.Player, new Point(-1, 0));
                 CenterOnActor(GameLoop.World.Player);
             }
 
@@ -75,7 +75,19 @@ namespace SC_VSCode.UI
             // Increment player's X coordinate by 1
             if (SadConsole.Global.KeyboardState.IsKeyPressed(Microsoft.Xna.Framework.Input.Keys.Right))
             {
-                GameLoop.World.Player.MoveBy(new Point(1, 0));
+                GameLoop.CommandManager.MoveActorBy(GameLoop.World.Player, new Point(1, 0));
+                CenterOnActor(GameLoop.World.Player);
+            }
+            // Redo last command: X
+            if(SadConsole.Global.KeyboardState.IsKeyReleased(Microsoft.Xna.Framework.Input.Keys.X))
+            {
+                GameLoop.CommandManager.RedoMoveActorBy();
+                CenterOnActor(GameLoop.World.Player);
+            }
+            //Undo last command : Z
+            if(SadConsole.Global.KeyboardState.IsKeyReleased(Microsoft.Xna.Framework.Input.Keys.Z))
+            {
+                GameLoop.CommandManager.UndoMoveActorBy();
                 CenterOnActor(GameLoop.World.Player);
             }
         }
@@ -128,6 +140,9 @@ namespace SC_VSCode.UI
         {
             CreateConsoles();
             CreateMapWindow(GameLoop.GameWidth / 2, GameLoop.GameHeight / 2, "Game Map");
+
+            //start the game with viewport focused on the player
+            CenterOnActor(GameLoop.World.Player);
 
             MessageLog = new MessageLogWindow(GameLoop.GameWidth / 2, GameLoop.GameHeight / 2, "Message Log");
             Children.Add(MessageLog);
